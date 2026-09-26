@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import BannerImg from "@/assets/banner.png";
-
+import BannerImg from "../../../assets/banner.png";
 const Banner = () => {
   return (
     <section className="m-10">

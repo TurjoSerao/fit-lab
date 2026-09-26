@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
-import Logo from "@/assets/logo.png";
+import Logo from "../../../assets/logo.png";
 
 const NavBar = () => {
   const pathname = usePathname();
