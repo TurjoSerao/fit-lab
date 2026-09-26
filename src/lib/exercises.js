@@ -1,4 +1,4 @@
-import fallbackExercises from "@/data/exercises";
+import fallbackExercises from "@/data/exercises.json";
 
 const API_URL = "https://api.abcz.workers.dev/api/fitlog";
 
