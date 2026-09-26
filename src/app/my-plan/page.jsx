@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { usePlan } from "@/context/PlanContext";
+import { toast } from "react-toastify";
 
 const MyPlanPage = () => {
   const {
@@ -63,13 +64,11 @@ const MyPlanPage = () => {
 
   const handleRemoveFromPlan = (exercise) => {
     removeFromPlan(exercise.id);
-
-    alert(`${exercise.name} has been removed from your plan.`);
+    toast.success(`${exercise.name} removed from your plan.`);
   };
 
   const handleRemoveFromSaved = (exercise) => {
     removeFromSaved(exercise.id);
-
     alert(`${exercise.name} has been removed from your saved workouts.`);
   };
 

@@ -3,7 +3,8 @@ import "./globals.css";
 import NavBar from "./components/shared/NavBar";
 import Footer from "./components/shared/Footer";
 import { PlanProvider } from "@/context/PlanContext";
-import { ToastContainer } from "react-toastify";
+
+import ToastProvider from "./components/shared/ToastProvider";
 
 const oswald = Oswald({
   weight: ["400", "700"],
@@ -30,7 +31,7 @@ export default function RootLayout({ children }) {
           <NavBar />
           {children}
           <Footer />
-          <ToastContainer />
+          <ToastProvider />
         </PlanProvider>
       </body>
     </html>

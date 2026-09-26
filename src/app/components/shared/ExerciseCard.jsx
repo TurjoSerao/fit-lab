@@ -4,14 +4,18 @@ import React from "react";
 import { FaRegClock, FaRegStar } from "react-icons/fa";
 import { IoIosLeaf } from "react-icons/io";
 
+import ExerciseImg from "@/assets/banner.png";
+
 const ExerciseCard = ({ exercise }) => {
+  const imageUrl = exercise.image || ExerciseImg;
+
   return (
     <Link
       href={`/exercises/${exercise.id}`}
       className="block rounded-xl bg-[#15171D] transition-transform hover:-translate-y-1"
     >
       <Image
-        src={exercise.image}
+        src={imageUrl}
         width={390}
         height={190}
         alt={exercise.name}

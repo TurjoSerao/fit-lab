@@ -1,22 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-
-const getExerciseData = async () => {
-  const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
-
-  console.log("Status:", res.status);
-  console.log("Response:", res);
-
-  if (!res.ok) {
-    throw new Error(`Failed to fetch exercises: ${res.status}`);
-  }
-
-  return res.json();
-};
+import { getExerciseData } from "@/lib/exercises";
 
 const ExercisePage = async () => {
-  const exercises = await getExerciseData();
+  const exerciseData = await getExerciseData();
 
   return (
     <section className="mx-5 my-10 md:mx-10">
@@ -36,13 +24,20 @@ const ExercisePage = async () => {
           >
             {/* Image */}
             <div className="aspect-[4/3] overflow-hidden">
-              <Image
-                src={exercise.image}
-                width={588}
-                height={773}
-                alt={exercise.name}
-                className="h-full w-full object-cover"
-              />
+              {exercise.image ? (
+                <Image
+                  src={exercise.image}
+                  width={588}
+                  height={773}
+                  alt={exercise.name}
+                  unoptimized
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <div className="flex h-full items-center justify-center bg-[#202329] text-sm text-[#9CA3AF]">
+                  Image unavailable
+                </div>
+              )}
             </div>
 
             {/* Content */}
@@ -83,4 +78,30 @@ const ExercisePage = async () => {
   );
 };
 
-export default ExercisePage;
+// export default ExercisePage;
+// import ExerciseCard from "@/app/components/shared/ExerciseCard";
+// import { getExerciseData } from "@/lib/exercises";
+
+// const ExercisesPage = async () => {
+//   const exerciseData = await getExerciseData();
+
+//   return (
+//     <main className="mx-5 my-10 sm:mx-6 md:mx-8 lg:mx-10">
+//       <div className="mb-8">
+//         <h1 className="text-4xl font-bold text-white">Exercise Library</h1>
+
+//         <p className="mt-2 text-[#9CA3AF]">
+//           Explore exercises and build your workout plan.
+//         </p>
+//       </div>
+
+//       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+//         {exerciseData.map((exercise) => (
+//           <ExerciseCard key={exercise.id} exercise={exercise} />
+//         ))}
+//       </div>
+//     </main>
+//   );
+// };
+
+// export default ExercisesPage;

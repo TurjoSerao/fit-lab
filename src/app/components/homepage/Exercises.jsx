@@ -1,11 +1,6 @@
 import React from "react";
 import ExerciseCard from "../shared/ExerciseCard";
-
-const getExerciseData = async () => {
-  const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
-  const data = await res.json();
-  return data;
-};
+import { getExerciseData } from "@/lib/exercises";
 
 const Exercises = async () => {
   const exerciseData = await getExerciseData();

@@ -2,16 +2,7 @@ import Image from "next/image";
 import React from "react";
 import AddToPlanButton from "@/app/components/workouts/AddToPlanButton";
 import SaveForLaterButton from "@/app/components/workouts/SaveForLaterButton";
-
-const getExerciseData = async () => {
-  const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch exercises");
-  }
-
-  return res.json();
-};
+import { getExerciseData } from "@/lib/exercises";
 
 const ExerciseDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -32,13 +23,20 @@ const ExerciseDetailsPage = async ({ params }) => {
     <section className="my-5 mx-5 flex flex-col gap-8 md:mx-10 lg:flex-row lg:items-start lg:gap-15">
       {/* Image */}
       <div className="w-full lg:w-[40%]">
-        <Image
-          src={exercise.image}
-          width={588}
-          height={773}
-          alt={exercise.name}
-          className="w-full object-cover rounded-xl"
-        />
+        {exercise.image ? (
+          <Image
+            src={exercise.image}
+            width={588}
+            height={773}
+            alt={exercise.name}
+            unoptimized
+            className="w-full rounded-xl object-cover"
+          />
+        ) : (
+          <div className="flex aspect-[4/3] items-center justify-center rounded-xl bg-[#202329] text-sm text-[#9CA3AF]">
+            Image unavailable
+          </div>
+        )}
       </div>
 
       {/* Content */}
