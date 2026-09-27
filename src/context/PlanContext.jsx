@@ -7,6 +7,7 @@ const PlanContext = createContext();
 export const PlanProvider = ({ children }) => {
   const [plan, setPlan] = useState([]);
   const [saved, setSaved] = useState([]);
+  const [completed, setCompleted] = useState([]);
 
   // Add exercise to today's plan
   const addToPlan = (exercise) => {
@@ -28,6 +29,11 @@ export const PlanProvider = ({ children }) => {
     setPlan((previousPlan) =>
       previousPlan.filter((exercise) => exercise.id !== id),
     );
+
+    // Also remove completed status
+    setCompleted((previousCompleted) =>
+      previousCompleted.filter((exerciseId) => exerciseId !== id),
+    );
   };
 
   // Save exercise for later
@@ -45,11 +51,35 @@ export const PlanProvider = ({ children }) => {
     });
   };
 
-  // Remove exercise from saved list
+  // Remove exercise from saved
   const removeFromSaved = (id) => {
     setSaved((previousSaved) =>
       previousSaved.filter((exercise) => exercise.id !== id),
     );
+  };
+
+  // Move saved exercise to today's plan
+  const moveToPlan = (exercise) => {
+    addToPlan(exercise);
+    removeFromSaved(exercise.id);
+  };
+
+  // Mark exercise as done / undone
+  const toggleCompleted = (id) => {
+    setCompleted((previousCompleted) => {
+      const alreadyCompleted = previousCompleted.includes(id);
+
+      if (alreadyCompleted) {
+        return previousCompleted.filter((exerciseId) => exerciseId !== id);
+      }
+
+      return [...previousCompleted, id];
+    });
+  };
+
+  // Check whether an exercise is completed
+  const isCompleted = (id) => {
+    return completed.includes(id);
   };
 
   return (
@@ -58,9 +88,15 @@ export const PlanProvider = ({ children }) => {
         plan,
         addToPlan,
         removeFromPlan,
+
         saved,
         saveForLater,
         removeFromSaved,
+        moveToPlan,
+
+        completed,
+        toggleCompleted,
+        isCompleted,
       }}
     >
       {children}

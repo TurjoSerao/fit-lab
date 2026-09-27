@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { usePathname } from "next/navigation";
+
 import Logo from "../../../assets/logo.png";
 import { usePlan } from "@/context/PlanContext";
 
@@ -21,39 +21,9 @@ const NavBar = () => {
   const linkClass =
     "px-4 py-2 rounded-lg hover:text-[#C2F800] transition-colors";
 
-  const Navigation = (
-    <>
-      <li>
-        <Link
-          href="/"
-          className={`${linkClass} ${isActive("/") ? activeClass : ""}`}
-        >
-          WorkOuts
-        </Link>
-      </li>
-
-      <li>
-        <Link
-          href="/my-plan"
-          className={`${linkClass} ${isActive("/my-plan") ? activeClass : ""}`}
-        >
-          My plan
-        </Link>
-      </li>
-      <li>
-        <Link
-          href="/saved"
-          className={`${linkClass} ${isActive("/saved") ? activeClass : ""}`}
-        >
-          Saved
-        </Link>
-      </li>
-    </>
-  );
-
   return (
-    <div className="border-b-2 border-gray-800 mb-5">
-      <div className="mx-10 my-5">
+    <div className="mb-5 border-b-2 border-gray-800">
+      <div className="mx-5 my-5 md:mx-10">
         <div className="navbar">
           {/* Logo + Mobile Menu */}
           <div className="navbar-start">
@@ -83,9 +53,25 @@ const NavBar = () => {
 
               <ul
                 tabIndex={-1}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content z-10 mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
               >
-                {Navigation}
+                <li>
+                  <Link
+                    href="/"
+                    className={isActive("/") ? activeClass : linkClass}
+                  >
+                    Workouts
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    href="/my-plan"
+                    className={isActive("/my-plan") ? activeClass : linkClass}
+                  >
+                    My Plan
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -97,19 +83,38 @@ const NavBar = () => {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Page Navigation */}
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal gap-2 px-1">{Navigation}</ul>
+            <ul className="menu menu-horizontal gap-2 px-1">
+              <li>
+                <Link
+                  href="/"
+                  className={isActive("/") ? activeClass : linkClass}
+                >
+                  Workouts
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/my-plan"
+                  className={isActive("/my-plan") ? activeClass : linkClass}
+                >
+                  My Plan
+                </Link>
+              </li>
+            </ul>
           </div>
 
-          {/* Plan + Saved */}
-          <div className="navbar-end gap-5">
+          {/* Plan + Saved Counters */}
+          <div className="navbar-end gap-3 md:gap-5">
             {/* Plan */}
             <Link
-              href="/my-plan"
-              className="flex items-center gap-2 font-semibold hover:text-[#C2F800] transition-colors"
+              href="/my-plan?tab=plan"
+              className="flex items-center gap-2 font-semibold transition-colors hover:text-[#C2F800]"
             >
-              Plan
+              <span>Plan</span>
+
               <span className="rounded-full bg-[#C2F800] px-2 py-1 text-sm font-bold text-black">
                 {plan.length}
               </span>
@@ -117,11 +122,12 @@ const NavBar = () => {
 
             {/* Saved */}
             <Link
-              href="/saved"
-              className="flex items-center gap-2 font-semibold transition-colors"
+              href="/my-plan?tab=saved"
+              className="flex items-center gap-2 font-semibold transition-colors hover:text-[#C2F800]"
             >
-              Saved
-              <span className="rounded-full px-2 py-1 text-sm font-bold border text-white">
+              <span>Saved</span>
+
+              <span className="rounded-full border border-gray-700 px-2 py-1 text-sm font-bold text-white">
                 {saved.length}
               </span>
             </Link>

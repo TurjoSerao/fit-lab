@@ -1,6 +1,7 @@
 "use client";
 
 import { CiCalendar } from "react-icons/ci";
+import { toast } from "react-toastify";
 import { usePlan } from "@/context/PlanContext";
 
 const AddToPlanButton = ({ exercise }) => {
@@ -10,11 +11,13 @@ const AddToPlanButton = ({ exercise }) => {
     const alreadyAdded = plan.some((item) => item.id === exercise.id);
 
     if (alreadyAdded) {
-      alert("This exercise is already in your today's plan.");
+      toast.info("This exercise is already in today's plan.");
       return;
     }
 
     addToPlan(exercise);
+
+    toast.success(`${exercise.name} added to today's plan!`);
   };
 
   return (
