@@ -12,8 +12,8 @@ const ExerciseCard = ({ exercise }) => {
     >
       <Image
         src={exercise.image}
-        width={390}
-        height={190}
+        width={392}
+        height={192}
         alt={exercise.name}
         className="h-[220px] w-full rounded-t-xl object-cover pb-2"
       />

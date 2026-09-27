@@ -3,7 +3,7 @@ import React from "react";
 import BannerImg from "../../../assets/banner.png";
 const Banner = () => {
   return (
-    <section className="m-10">
+    <section className="m-5 lg:m-10">
       <div className="flex flex-col items-center justify-between rounded-xl bg-[#15171D] sm:flex-row h-auto sm:h-120">
         <div className="w-full space-y-4 p-6 sm:w-150 sm:p-10 md:p-12 lg:p-15">
           <p className="text-[#C2F800] text-[11px] uppercase">
@@ -29,8 +29,8 @@ const Banner = () => {
         <div className="shrink-0">
           <Image
             src={BannerImg}
-            width={335}
-            height={335}
+            width={340}
+            height={340}
             alt="Banner Image"
             className="w-60 sm:w-72 md:w-[300px] lg:w-[335px]"
           />
