@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FITLOG
 
-## Getting Started
+FITLOG is a modern workout and exercise tracking web application built with Next.js. It allows users to explore exercises, view detailed workout information, create a personal workout plan, save exercises for later, and track completed exercises.
 
-First, run the development server:
+## 🚀 Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Next.js
+- React
+- JavaScript
+- Tailwind CSS
+- DaisyUI
+- React Icons
+- React Toastify
+- REST API
+- Next.js Image Optimization
+- Next.js App Router
+
+## ✨ Key Features
+
+### 1. Exercise Discovery
+
+Browse a collection of exercises with useful information such as:
+
+- Exercise name
+- Description
+- Muscle groups
+- Difficulty
+- Duration
+- Calories burned
+
+### 2. Exercise Details
+
+View detailed information about each exercise, including:
+
+- Equipment
+- Sets and reps
+- Duration
+- Calories
+- Rating
+- Step-by-step instructions
+
+Users can also add exercises to today's plan or save them for later.
+
+### 3. Personal Workout Plan
+
+The My Plan page allows users to manage their workout routine.
+
+Users can:
+
+- Add exercises to today's plan
+- Remove exercises from the plan
+- Mark exercises as completed
+- View exercise details
+- Sort exercises by name, duration, or calories
+- See total exercises, duration, and calories
+
+### 4. Save Exercises for Later
+
+Users can save exercises that they want to revisit later.
+
+The Saved tab allows users to:
+
+- View saved exercises
+- Open exercise details
+- Remove saved exercises
+
+### 5. Responsive User Interface
+
+FITLOG provides a responsive interface that works across:
+
+- Desktop
+- Tablet
+- Mobile
+
+The navigation, exercise cards, workout plan, buttons, and layouts adapt to different screen sizes.
+
+## 📁 Project Structure
+
+```text
+src/
+├── app/
+│   ├── components/
+│   │   ├── shared/
+│   │   └── workouts/
+│   ├── exercises/
+│   │   └── [id]/
+│   ├── my-plan/
+│   ├── not-found.jsx
+│   ├── loading.jsx
+│   ├── layout.jsx
+│   └── page.jsx
+│
+├── context/
+│   └── PlanContext.jsx
+│
+└── assets/
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
