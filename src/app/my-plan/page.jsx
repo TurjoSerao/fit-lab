@@ -128,7 +128,7 @@ const MyPlanPage = () => {
         <h1 className="text-4xl font-bold text-white">My Plan</h1>
 
         <p className="mt-2 text-[#9CA3AF]">
-          Manage your workout plan and saved exercises.
+          Cap of five lifts for today. Finish them, then load more.
         </p>
       </div>
 
@@ -145,7 +145,7 @@ const MyPlanPage = () => {
 
         {/* Duration */}
         <div className="rounded-xl border border-gray-900 bg-[#15171D] p-5">
-          <p className="text-sm text-[#9CA3AF]">Total Duration</p>
+          <p className="text-sm text-[#9CA3AF]">Minutes</p>
 
           <p className="mt-2 text-3xl font-bold text-white">
             {totalDuration}
@@ -158,7 +158,7 @@ const MyPlanPage = () => {
 
         {/* Calories */}
         <div className="rounded-xl border border-gray-900 bg-[#15171D] p-5">
-          <p className="text-sm text-[#9CA3AF]">Total Calories</p>
+          <p className="text-sm text-[#9CA3AF]">Calories</p>
 
           <p className="mt-2 text-3xl font-bold text-white">
             {totalCalories}
@@ -182,7 +182,7 @@ const MyPlanPage = () => {
                 : "bg-[#15171D] text-[#9CA3AF] hover:text-white"
             }`}
           >
-            Today's Plan ({plan.length})
+            Today's Plan
           </button>
 
           <button
@@ -193,7 +193,7 @@ const MyPlanPage = () => {
                 : "bg-[#15171D] text-[#9CA3AF] hover:text-white"
             }`}
           >
-            Saved ({saved.length})
+            Saved
           </button>
         </div>
 
@@ -234,7 +234,7 @@ const MyPlanPage = () => {
           </p>
 
           <Link href="/exercises" className="btn mt-5 bg-[#CCFF00] text-black">
-            Browse Exercises
+            Go to WorkOuts
           </Link>
         </div>
       ) : (
